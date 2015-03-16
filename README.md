@@ -32,4 +32,4 @@ Link
 * jtable http://www.jtable.org/
 * bootstrap http://getbootstrap.com
 
-[:)](#top,"Don't forget to smile")
+[:)](#top "Don't forget to smile")
