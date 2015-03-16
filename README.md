@@ -1,35 +1,35 @@
-What is jTable
+Jtable + Bootstrap
 ======
 
 http://www.jtable.org
 
-[![A screenshot of jTable](https://raw.githubusercontent.com/hikalkan/jtable/master/screenshot.png)](http://jtable.org/)
+[![A screenshot of jTable](https://raw.githubusercontent.com/jepperpi/jtable/master/screenshot.png)]
 
-jTable is a jQuery plugin used to create AJAX based CRUD tables without coding HTML or Javascript. It has several features including:
+I have added some [bootstrap](https://github.com/twbs/bootstrap) style to [jTable](https://github.com/hikalkan/jtable) jquery plugin.
 
-* Automatically creates HTML table and loads records from server using AJAX.
-* Creates 'create new record' jQueryUI dialog form. When user creates a record, it sends data to server using AJAX and adds the same record to the table in the page.
-* Creates 'edit record' jQueryUI dialog form. When user edits a record, it updates server using AJAX and updates all cells on the table in the page.
-* Allow user to 'delete a record' by jQueryUI dialog based confirmation. When user deletes a record, it deletes the record from server using AJAX and deletes the record from the table in the page.
-* Shows animations for create/delete/edit operations on the table.
-* Supports server side paging using AJAX.
-* Supports server side sorting using AJAX.
-* Supports master/child tables.
-* Allows user to select rows.
-* Allows user to resize columns.
-* Allows user to show/hide columns.
-* Exposes some events to enable validation with forms.
-* It can be localized easily.
-* All styling of table and forms are defined in a CSS file, so you can easily change style of everything to use plugin in your pages. CSS file is well defined and commented.
-* It comes with pre-defined color themes.
-* It is not depended on any server side technology.
-* It is platform independed and works on all common browsers.
+I' ve not create a jtable theme, I have change jtable code in order to include bootsrap css class in the elements of table.
 
-Notes
+It's been created for a personal project: it's not been heavy tested.
+
+Usage
 ======
 
-lib folder contains files necessary to use jTable.
+1. Include bootsrap css
+`<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">`
+`<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet">`
+2. Include jtable base css
+`<link href="lib/themes/basic/jtable_basic.min.css" rel="stylesheet" type="text/css" />`
+3. Include file custom.css of this repository
+`<link href="custom.css" rel="stylesheet" type="text/css" />`
+4. Include jtable
+`<script src="lib/jquery.jtable.js"></script>`
 
-dev folder contains parts of library helpful for development of jTable.
+In file example.html you can find an example of implementation.
 
-See http://www.jtable.org for documentation, demos, themes and more...
+Link
+======
+
+* jtable http://www.jtable.org/
+* bootstrap http://getbootstrap.com
+
+*[:)]: Don't forget to smile
