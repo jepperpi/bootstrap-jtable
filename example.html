@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Jtable-Bootsrap example</title>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+		<!-- Bootstrap -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		
+		<!-- jquery ui -->
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+		<link href="https://code.jquery.com/ui/1.11.4/themes/start/jquery-ui.css" rel="stylesheet" type="text/css" />
+		
+		<!-- jtable -->
+		<script src="lib/jquery.jtable.js"></script>
+		<link href="lib/themes/basic/jtable_basic.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- some custom adjustments -->
+		<link href="custom.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body style="padding-top:70px">
+		<div class="container">
+			<div id="tableContainer"></div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#tableContainer').jtable({
+            		title: 'The Student List',
+            		paging: true, //Enable paging
+            		pageSize: 10, //Set page size (default: 10)
+            		sorting: true, //Enable sorting
+            		defaultSorting: 'Name ASC', //Set default sorting
+            		selecting: true,
+            		actions: {
+				        listAction: function(){
+				        	return exampleData
+				        },
+				        deleteAction: '/Demo/DeleteStudent',
+				        updateAction: '/Demo/UpdateStudent',
+				        createAction: '/Demo/CreateStudent'
+				    },
+				    fields: {
+				        StudentId: {
+				            key: true,
+				            create: false,
+				            edit: false,
+				            list: false
+				        },
+				        Name: {
+				            title: 'Name',
+				            width: '23%'
+				        },
+				        EmailAddress: {
+				            title: 'Email address',
+				            list: false
+				        },
+				        Password: {
+				            title: 'User Password',
+				            type: 'password',
+				            list: false
+				        },
+				        Gender: {
+				            title: 'Gender',
+				            width: '13%',
+				            options: { 'M': 'Male', 'F': 'Female' }
+				        },
+				        BirthDate: {
+				            title: 'Birth date',
+				            width: '15%',
+				            type: 'date',
+				            displayFormat: 'yy-mm-dd'
+				        },
+				        Education: {
+				            title: 'Education',
+				            list: false,
+				            type: 'radiobutton',
+				            options: { '1': 'Primary school',
+				                       '2': 'High school',
+				                       '3': 'University' }
+				        },
+				        About: {
+				            title: 'About this person',
+				            type: 'textarea',
+				            list: false
+				        },
+				        IsActive: {
+				            title: 'Status',
+				            width: '12%',
+				            type: 'checkbox',
+				            values: { 'false': 'Passive', 'true': 'Active' },
+				            defaultValue: 'true'
+				        },
+				        RecordDate: {
+				            title: 'Record date',
+				            width: '15%',
+				            type: 'date',
+				            displayFormat: 'dd.mm.yy',
+				            create: false,
+				            edit: false,
+				            sorting: false //This column is not sortable!
+				        }
+				    }
+				});
+ 
+				//Load student list from server
+				$('#tableContainer').jtable('load');
+			});
+			var exampleData =
+				{
+					Result: "OK",
+					Records:
+					[
+						{
+							"StudentId":89,
+							"ContinentalId":6,
+							"CountryId":19,
+							"CityId":58,
+							"Name":"Agatha Anar",
+							"EmailAddress":"agatha.anar@jtable.org",
+							"Password":"123",
+							"Gender":"F",
+							"BirthDate":"\/Date(71701200000)\/",
+							"About":"",
+							"Education":1,
+							"IsActive":false,
+							"RecordDate":"\/Date(1438635600000)\/"
+						},
+						{
+							"StudentId":120,
+							"ContinentalId":1,
+							"CountryId":24,
+							"CityId":67,
+							"Name":"Agatha Coolidge",
+							"EmailAddress":"agatha.coolidge@jtable.org",
+							"Password":"123",
+							"Gender":"F",
+							"BirthDate":"\/Date(-992746800000)\/",
+							"About":"",
+							"Education":1,
+							"IsActive":true,
+							"RecordDate":"\/Date(1426111200000)\/"
+						},
+						{
+							"StudentId":66,
+							"ContinentalId":2,
+							"CountryId":3,
+							"CityId":10,
+							"Name":"Aldous Corleone",
+							"EmailAddress":"aldous.corleone@jtable.org",
+							"Password":"123",
+							"Gender":"F",
+							"BirthDate":"\/Date(-604461600000)\/",
+							"About":"",
+							"Education":3,
+							"IsActive":true,
+							"RecordDate":"\/Date(1390600800000)\/"
+						},
+						{
+							"StudentId":72,
+							"ContinentalId":1,
+							"CountryId":9,
+							"CityId":33,
+							"Name":"Aldous Corleone",
+							"EmailAddress":"aldous.corleone@jtable.org",
+							"Password":"123",
+							"Gender":"F",
+							"BirthDate":"\/Date(-914637600000)\/",
+							"About":"",
+							"Education":2,
+							"IsActive":true,
+							"RecordDate":"\/Date(1444078800000)\/"
+						},
+						{	
+							"StudentId":102,
+							"ContinentalId":1,
+							"CountryId":9,
+							"CityId":35,
+							"Name":"Amin Tannen",
+							"EmailAddress":"amin.tannen@jtable.org",
+							"Password":"123",
+							"Gender":"M",
+							"BirthDate":"\/Date(-229489200000)\/",
+							"About":"",
+							"Education":1,
+							"IsActive":true,
+							"RecordDate":"\/Date(1414098000000)\/"},{"StudentId":7,
+							"ContinentalId":2,
+							"CountryId":6,
+							"CityId":21,
+							"Name":"Andrew Vega",
+							"EmailAddress":"andrew.vega@jtable.org",
+							"Password":"123",
+							"Gender":"M",
+							"BirthDate":"\/Date(1197064800000)\/",
+							"About":"",
+							"Education":2,
+							"IsActive":true,
+							"RecordDate":"\/Date(1411592400000)\/"
+						},
+						{
+							"StudentId":103,
+							"ContinentalId":4,
+							"CountryId":14,
+							"CityId":47,
+							"Name":"Andrew Wallace",
+							"EmailAddress":"andrew.wallace@jtable.org",
+							"Password":"123",
+							"Gender":"M",
+							"BirthDate":"\/Date(445125600000)\/",
+							"About":"",
+							"Education":2,
+							"IsActive":false,
+							"RecordDate":"\/Date(1440018000000)\/"
+						},
+						{
+							"StudentId":4,
+							"ContinentalId":1,
+							"CountryId":23,
+							"CityId":66,
+							"Name":"Andy Zweig",
+							"EmailAddress":"andy.zweig@jtable.org",
+							"Password":"123",
+							"Gender":"M",
+							"BirthDate":"\/Date(1097614800000)\/",
+							"About":"",
+							"Education":1,
+							"IsActive":true,
+							"RecordDate":"\/Date(1423778400000)\/"
+						},
+						{
+							"StudentId":109,
+							"ContinentalId":1,
+							"CountryId":8,
+							"CityId":32,
+							"Name":"Antonio Fishburne",
+							"EmailAddress":"antonio.fishburne@jtable.org",
+							"Password":"123",
+							"Gender":"M",
+							"BirthDate":"\/Date(-354596400000)\/",
+							"About":"",
+							"Education":3,
+							"IsActive":true,
+							"RecordDate":"\/Date(1391205600000)\/"
+						},
+						{
+							"StudentId":57,
+							"ContinentalId":1,
+							"CountryId":23,
+							"CityId":65,
+							"Name":"Arda Fuller",
+							"EmailAddress":"arda.fuller@jtable.org",
+							"Password":"123",
+							"Gender":"M",
+							"BirthDate":"\/Date(301352400000)\/",
+							"About":"",
+							"Education":3,
+							"IsActive":false,
+							"RecordDate":"\/Date(1390168800000)\/"
+						}
+					],
+					"TotalRecordCount":128
+				}
+		</script>
+	</body>
+</html>
